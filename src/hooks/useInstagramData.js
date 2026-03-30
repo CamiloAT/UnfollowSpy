@@ -9,43 +9,53 @@ export const useInstagramData = () => {
   const extractUsers = (data, type) => {
     const users = [];
 
-    // Helper interno para extraer el usuario desde los diferentes formatos en los que viene
-    const getUsername = (item) => {
+    // Helper interno para extraer el usuario y fecha desde los diferentes formatos
+    const getUserData = (item) => {
+      let username = null;
+      let timestamp = null;
+      const listData = item.string_list_data && item.string_list_data[0];
+
       // 1. Si viene explícitamente en el valor
-      if (item.string_list_data && item.string_list_data[0] && item.string_list_data[0].value) {
-        return item.string_list_data[0].value;
+      if (listData && listData.value) {
+        username = listData.value;
       }
       // 2. Si viene como titulo
-      if (item.title) {
-        return item.title;
+      else if (item.title) {
+        username = item.title;
       }
-      // 3. Fallback: extraerlo del href (https://www.instagram.com/_u/usuario)
-      if (item.string_list_data && item.string_list_data[0] && item.string_list_data[0].href) {
-        const href = item.string_list_data[0].href;
-        return href.split('_u/')[1] || href.split('/').pop();
+      // 3. Fallback: extraerlo del href
+      else if (listData && listData.href) {
+        const href = listData.href;
+        username = href.split('_u/')[1] || href.split('/').pop();
       }
-      return null;
+
+      // Extraer timestamp si existe
+      if (listData && listData.timestamp) {
+        timestamp = listData.timestamp;
+      }
+
+      return { username, timestamp };
     };
     
     // followers_1.json format (Array directo)
     if (Array.isArray(data)) {
       data.forEach(item => {
-        const username = getUsername(item);
-        if (username) users.push(username);
+        const userData = getUserData(item);
+        if (userData.username) users.push(userData);
       });
     } 
     // following.json format
     else if (data && data.relationships_following) {
       data.relationships_following.forEach(item => {
-        const username = getUsername(item);
-        if (username) users.push(username);
+        const userData = getUserData(item);
+        if (userData.username) users.push(userData);
       });
     } 
     // Alternate followers_1.json format
     else if (data && data.relationships_followers) {
       data.relationships_followers.forEach(item => {
-        const username = getUsername(item);
-        if (username) users.push(username);
+        const userData = getUserData(item);
+        if (userData.username) users.push(userData);
       });
     } else {
       console.warn("Formato JSON no reconocido", data);
@@ -58,6 +68,26 @@ export const useInstagramData = () => {
   const handleFileUpload = (e, type) => {
     const file = e.target.files[0];
     if (!file) return;
+
+    // 1. Validar que el archivo sea JSON
+    if (!file.name.endsWith('.json')) {
+      setError(`El archivo "${file.name}" no es válido. Solo se permiten archivos .json`);
+      e.target.value = ''; // Limpiar el input
+      return;
+    }
+
+    // 2. Validar nombres de archivo estrictos por seguridad
+    if (type === 'followers' && file.name !== 'followers_1.json') {
+      setError('Por seguridad y exactitud, debes subir exactamente el archivo "followers_1.json" en la primera casilla.');
+      e.target.value = ''; // Limpiar el input
+      return;
+    }
+
+    if (type === 'following' && file.name !== 'following.json') {
+      setError('Por seguridad y exactitud, debes subir exactamente el archivo "following.json" en la segunda casilla.');
+      e.target.value = ''; // Limpiar el input
+      return;
+    }
 
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -86,8 +116,12 @@ export const useInstagramData = () => {
       return;
     }
 
-    const followersSet = new Set(followers);
-    const result = following.filter(user => !followersSet.has(user));
+    const followersSet = new Set(followers.map(f => f.username));
+    let result = following.filter(user => !followersSet.has(user.username));
+
+    // Ordenar por timestamp de más reciente a más antiguo si están disponibles
+    result.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
     setTraitors(result);
     setError('');
   };

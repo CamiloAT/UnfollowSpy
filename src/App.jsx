@@ -1,51 +1,19 @@
-﻿import { useState } from 'react';
-import { useInstagramData } from './hooks/useInstagramData';
-import { UploadSection } from './components/UploadSection';
-import { TraitorList } from './components/TraitorList';
+﻿import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LandingPage } from './components/LandingPage';
+import { AnalyzePage } from './components/AnalyzePage';
 import { Header } from './components/Header';
 import './styles/index.css';
 
 function App() {
-  const [isStarted, setIsStarted] = useState(false);
-  const {
-    followers,
-    following,
-    traitors,
-    error,
-    handleFileUpload,
-    calculateTraitors
-  } = useInstagramData();
-
   return (
-    <>
+    <Router>
       <Header />
-      
-      {!isStarted ? (
-        <LandingPage onStart={() => setIsStarted(true)} />
-      ) : (
-        <div className="app-container">
-          <button className="back-button" onClick={() => setIsStarted(false)}>
-            ← Volver al inicio
-          </button>
-
-          <div className="header">
-            <h1>Panel de Análisis 🕵️‍♂️</h1>
-            <p>Descubre quién no te sigue de vuelta</p>
-          </div>
-
-          <UploadSection 
-            followers={followers}
-            following={following}
-            error={error}
-            handleFileUpload={handleFileUpload}
-            calculateTraitors={calculateTraitors}
-          />
-
-          <TraitorList traitors={traitors} />
-        </div>
-      )}
-    </>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/home" element={<LandingPage />} />
+        <Route path="/analyze" element={<AnalyzePage />} />
+      </Routes>
+    </Router>
   );
 }
 
