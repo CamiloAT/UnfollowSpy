@@ -1,3 +1,7 @@
+# Archivos temporales locales de datos (Para no subir los archivos de Instagram accidentalmente)
+followers*.json
+following*.json
+
 # Logs
 logs
 *.log
@@ -7,18 +11,32 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencias 
 node_modules
+.pnp
+.pnp.js
+
+# Producción y Vite
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Editor directories and system files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Entornos (Variables ocultas)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
