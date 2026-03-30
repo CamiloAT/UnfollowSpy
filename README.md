@@ -1,18 +1,60 @@
-# React + Vite
+<div align="center">
+  <h1>UnfollowSpy</h1>
+  <p><strong>Descubre quién no te sigue de vuelta en Instagram de forma 100% segura y local.</strong></p>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Acerca del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**UnfollowSpy** es una herramienta web moderna diseñada con un enfoque absoluto en la privacidad. A diferencia de las aplicaciones de terceros que requieren tus credenciales de acceso y comprometen tu cuenta, UnfollowSpy analiza tus datos exportados directamente desde Meta (Instagram) de manera **100% local en tu navegador**. Ningún dato personal o archivo se envía a servidores externos.
 
-## React Compiler
+## Características Principales
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+*   **Privacidad Total:** Analiza tus seguidores sin necesidad de iniciar sesión o proveer contraseñas. Todo el procesamiento se realiza en tu equipo.
+*   **Interfaz Moderna:** Diseño altamente pulido centrado en la usabilidad, destacando gradientes SVG inspirados en la marca, animaciones secuenciales y un entorno libre de distracciones informales.
+*   **Análisis Temporal Integral:** Decodifica las marcas de tiempo (UNIX timestamps) estipuladas por Meta para indicarte, con exactitud, los días transcurridos desde que esa persona comenzó a seguirte.
+*   **Validaciones Inteligentes y Estrictas:** El sistema previene errores mediante la verificación rigurosa de los archivos originales de exportación (`followers_1.json` y `following.json`).
+*   **Rendimiento Óptimo:** Arquitectura SPA super rápida que procesa el cruce de datos al instante.
 
-Note: This will impact Vite dev & build performances.
+## Arquitectura y Tecnologías
 
-## Expanding the ESLint configuration
+*   **Core Frontend:** React 18
+*   **Navegación:** React Router DOM v6
+*   **Procesamiento de Build:** Vite
+*   **Diseño Visual:** CSS Moderno (Variables UI, Animaciones Keyframes personalizadas, Flexbox/Grid)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Guía de Instalación y Uso
+
+Sigue estos pasos para arrancar el proyecto en tu máquina local:
+
+1. **Abre tu terminal en el directorio del proyecto**:
+   ```bash
+   cd "Proyecto Instagram"
+   ```
+
+2. **Instala todas las dependencias necesarias**:
+   ```bash
+   npm install
+   ```
+
+3. **Ejecuta el servidor local de desarrollo**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Inicia la aplicación**:
+   Abre en tu navegador web la dirección local arrojada por la terminal (por defecto `http://localhost:5173`).
+
+## Instrucciones: Cómo obtener tus datos de Instagram
+
+1. Ingresa a la Centro de Cuentas / Configuración de cuenta en Instagram (App o Web).
+2. Dirígete a la sección **Tu actividad** > **Descargar tu información**.
+3. Solicita una copia de tus datos y asegúrate de elegir el formato **JSON**.
+4. Una vez notificado y descargado el archivo `.zip`, extráelo en tu computadora.
+5. Inicia UnfollowSpy y sube los documentos `followers_1.json` y `following.json` (que localizarás dentro de la carpeta interna `connections/followers_and_following`).
+
+---
+<div align="center">
+  <i>Audita tu perfil manteniendo el control absoluto de tus datos.</i>
+</div>
