@@ -1,60 +1,60 @@
 <div align="center">
   <h1>UnfollowSpy</h1>
-  <p><strong>Descubre quién no te sigue de vuelta en Instagram de forma 100% segura y local.</strong></p>
+  <p><strong>Discover who doesn't follow you back on Instagram in a 100% secure and local way.</strong></p>
 </div>
 
 ---
 
-## Acerca del Proyecto
+## About the Project
 
-**UnfollowSpy** es una herramienta web moderna diseñada con un enfoque absoluto en la privacidad. A diferencia de las aplicaciones de terceros que requieren tus credenciales de acceso y comprometen tu cuenta, UnfollowSpy analiza tus datos exportados directamente desde Meta (Instagram) de manera **100% local en tu navegador**. Ningún dato personal o archivo se envía a servidores externos.
+**UnfollowSpy** is a modern web tool designed with an absolute focus on privacy. Unlike third-party applications that require your login credentials and compromise your account, UnfollowSpy analyzes your data exported directly from Meta (Instagram) **100% locally in your browser**. No personal data or files are sent to external servers.
 
-## Características Principales
+## Key Features
 
-*   **Privacidad Total:** Analiza tus seguidores sin necesidad de iniciar sesión o proveer contraseñas. Todo el procesamiento se realiza en tu equipo.
-*   **Interfaz Moderna:** Diseño altamente pulido centrado en la usabilidad, destacando gradientes SVG inspirados en la marca, animaciones secuenciales y un entorno libre de distracciones informales.
-*   **Análisis Temporal Integral:** Decodifica las marcas de tiempo (UNIX timestamps) estipuladas por Meta para indicarte, con exactitud, los días transcurridos desde que esa persona comenzó a seguirte.
-*   **Validaciones Inteligentes y Estrictas:** El sistema previene errores mediante la verificación rigurosa de los archivos originales de exportación (`followers_1.json` y `following.json`).
-*   **Rendimiento Óptimo:** Arquitectura SPA super rápida que procesa el cruce de datos al instante.
+*   **Total Privacy:** Analyze your followers without the need to log in or provide passwords. All processing is done strictly on your device.
+*   **Modern Interface:** Highly polished design focused on usability, featuring brand-inspired SVG gradients, sequential animations, and an environment free of informal distractions.
+*   **Comprehensive Time Analysis:** Decodes the timestamps (UNIX timestamps) provided by Meta to accurately indicate the days elapsed since that person started following you.
+*   **Smart & Strict Validations:** The system prevents errors through rigorous verification of the original export files (`followers_1.json` and `following.json`).
+*   **Optimal Performance:** Super-fast SPA architecture that processes data cross-referencing instantly.
 
-## Arquitectura y Tecnologías
+## Architecture & Technologies
 
-*   **Core Frontend:** React 18
-*   **Navegación:** React Router DOM v6
-*   **Procesamiento de Build:** Vite
-*   **Diseño Visual:** CSS Moderno (Variables UI, Animaciones Keyframes personalizadas, Flexbox/Grid)
+*   **Frontend Core:** React 18
+*   **Routing:** React Router DOM v6
+*   **Build Tool:** Vite
+*   **Visual Design:** Modern CSS (UI Variables, Custom Keyframe Animations, Flexbox/Grid)
 
-## Guía de Instalación y Uso
+## Installation & Usage Guide
 
-Sigue estos pasos para arrancar el proyecto en tu máquina local:
+Follow these steps to start the project on your local machine:
 
-1. **Abre tu terminal en el directorio del proyecto**:
+1. **Open your terminal in the project directory**:
    ```bash
    cd "Proyecto Instagram"
    ```
 
-2. **Instala todas las dependencias necesarias**:
+2. **Install all required dependencies**:
    ```bash
    npm install
    ```
 
-3. **Ejecuta el servidor local de desarrollo**:
+3. **Run the local development server**:
    ```bash
    npm run dev
    ```
 
-4. **Inicia la aplicación**:
-   Abre en tu navegador web la dirección local arrojada por la terminal (por defecto `http://localhost:5173`).
+4. **Start the application**:
+   Open the local address provided by the terminal in your web browser (by default `http://localhost:5173`).
 
-## Instrucciones: Cómo obtener tus datos de Instagram
+## Instructions: How to get your Instagram data
 
-1. Ingresa a la Centro de Cuentas / Configuración de cuenta en Instagram (App o Web).
-2. Dirígete a la sección **Tu actividad** > **Descargar tu información**.
-3. Solicita una copia de tus datos y asegúrate de elegir el formato **JSON**.
-4. Una vez notificado y descargado el archivo `.zip`, extráelo en tu computadora.
-5. Inicia UnfollowSpy y sube los documentos `followers_1.json` y `following.json` (que localizarás dentro de la carpeta interna `connections/followers_and_following`).
+1. Go to the Accounts Center / Account Settings on Instagram (App or Web).
+2. Navigate to the **Your activity** > **Download your information** section.
+3. Request a copy of your data and make sure to select the **JSON** format.
+4. Once you are notified and have downloaded the `.zip` file, extract it on your computer.
+5. Launch UnfollowSpy and upload the `followers_1.json` and `following.json` files (which you will find inside the inner `connections/followers_and_following` folder).
 
 ---
 <div align="center">
-  <i>Audita tu perfil manteniendo el control absoluto de tus datos.</i>
+  <i>Audit your profile while maintaining absolute control of your data.</i>
 </div>
