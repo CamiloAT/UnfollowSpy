@@ -5,6 +5,7 @@ export const useInstagramData = () => {
   const [following, setFollowing] = useState([]);
   const [traitors, setTraitors] = useState([]);
   const [error, setError] = useState('');
+  const [hasAnalyzed, setHasAnalyzed] = useState(false);
 
   const extractUsers = (data, type) => {
     const users = [];
@@ -102,6 +103,7 @@ export const useInstagramData = () => {
         }
         setError('');
         setTraitors([]); // Reset traitors when new file is uploaded
+        setHasAnalyzed(false);
       } catch (err) {
         setError('Error al leer el archivo. Asegúrate de que es el .json correcto.');
         console.error(err);
@@ -119,11 +121,18 @@ export const useInstagramData = () => {
     const followersSet = new Set(followers.map(f => f.username));
     let result = following.filter(user => !followersSet.has(user.username));
 
-    // Ordenar por timestamp de más reciente a más antiguo si están disponibles
-    result.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    // Ordenar alfabéticamente por defecto
+    result.sort((a, b) => {
+      const nameA = (a.username || '').toLowerCase();
+      const nameB = (b.username || '').toLowerCase();
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+      return 0;
+    });
 
     setTraitors(result);
     setError('');
+    setHasAnalyzed(true);
   };
 
   return {
@@ -131,6 +140,7 @@ export const useInstagramData = () => {
     following,
     traitors,
     error,
+    hasAnalyzed,
     handleFileUpload,
     calculateTraitors
   };
