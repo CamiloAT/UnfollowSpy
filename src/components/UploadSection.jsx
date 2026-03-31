@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
+import { TutorialModal } from './TutorialModal';
 
 const InstagramGradient = () => (
+// ...existing code...
   <svg width="0" height="0" style={{ position: 'absolute' }}>
     <defs>
       <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -40,6 +42,14 @@ export const UploadSection = ({ followers, following, error, handleFileUpload, c
   const followingInputRef = useRef(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [localErrors, setLocalErrors] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(() => {
+    return localStorage.getItem('unfollowSpy_tutorial_seen') !== 'true';
+  });
+
+  const handleCloseTutorial = () => {
+    localStorage.setItem('unfollowSpy_tutorial_seen', 'true');
+    setShowTutorial(false);
+  };
 
   const handleClick = (ref) => {
     ref.current.click();
@@ -142,6 +152,34 @@ export const UploadSection = ({ followers, following, error, handleFileUpload, c
           <span>{hintMessage}</span>
         </p>
       </div>
+
+      {!(followers.length > 0 && following.length > 0) && (
+        <div className="tutorial-open-btn-container">
+          <button 
+            className="tutorial-open-btn" 
+            onClick={() => setShowTutorial(true)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="tutorial-icon-gradient">
+              <defs>
+                <linearGradient id="tutorial-ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#f09433" />
+                  <stop offset="25%" stopColor="#e6683c" />
+                  <stop offset="50%" stopColor="#dc2743" />
+                  <stop offset="75%" stopColor="#cc2366" />
+                  <stop offset="100%" stopColor="#bc1888" />
+                </linearGradient>
+              </defs>
+              <circle cx="12" cy="12" r="10" stroke="url(#tutorial-ig-gradient)"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="url(#tutorial-ig-gradient)"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17" stroke="url(#tutorial-ig-gradient)"></line>
+            </svg>
+            <span>¿No sabes cómo obtener tus archivos? <span className="tutorial-highlight-text">Ver tutorial</span></span>
+          </button>
+        </div>
+      )}
+
+      {showTutorial && <TutorialModal onClose={handleCloseTutorial} />}
     </div>
   );
 };
+
