@@ -55,7 +55,6 @@ export const AnalyzePage = () => {
     calculateTraitors
   } = useInstagramData();
 
-  // 'traitors' | 'followers' | 'following'
   const [activeTab, setActiveTab] = useState('traitors');
 
   return (

@@ -105,9 +105,6 @@ body, html, #root {
   margin-top: -10px;
 }
 
-/* ==================================
-   NUEVOS ESTILOS - LANDING PAGE 
-   ================================== */
 .back-button {
   background: none;
   border: none;
@@ -126,9 +123,6 @@ body, html, #root {
   text-decoration: underline;
 }
 
-/* ==================================
-   HEADER (FIJO)
-   ================================== */
 .main-header {
   position: sticky;
   top: 0;
@@ -166,10 +160,6 @@ body, html, #root {
   letter-spacing: -0.5px;
 }
 
-/* ==================================
-   LANDING PAGE 
-   ================================== */
-
 .landing-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -181,7 +171,7 @@ body, html, #root {
 }
 
 .hero-section {
-  flex: none; /* Evitamos que el flex-grow nos cree más espacio arriba de lo necesario */
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -242,9 +232,6 @@ body, html, #root {
   box-shadow: 0 6px 16px rgba(220, 39, 67, 0.4);
 }
 
-/* ==================================
-   VIEW TABS (Traidores / Seguidores)
-   ================================== */
 .view-tabs {
   display: flex;
   gap: 12px;
@@ -277,10 +264,6 @@ body, html, #root {
   border-color: transparent;
   box-shadow: 0 4px 12px rgba(220, 39, 67, 0.2);
 }
-
-/* ==================================
-   LISTA Y FILTROS O BARRA DE BUSQUEDA
-   ================================== */
 
 .list-toolbar {
   display: flex;
@@ -357,10 +340,6 @@ body, html, #root {
 .empty-search-state p {
   margin: 0;
 }
-
-/* ==================================
-   TUTORIAL MODAL
-   ================================== */
 .tutorial-overlay {
   position: fixed;
   top: 0;
@@ -412,7 +391,7 @@ body, html, #root {
 }
 
 .tutorial-image-container {
-  background-color: #f3f4f6; /* Fondo gris/cafe neutral */
+  background-color: #f3f4f6;
   height: 45vh; 
   display: flex;
   justify-content: center;
@@ -591,7 +570,7 @@ body, html, #root {
 }
 
 .tutorial-icon-gradient {
-  stroke: none; /* override default currentColor on SVG element */
+  stroke: none;
 }
 
 .btn-secondary {
@@ -657,10 +636,6 @@ body, html, #root {
   }
 }
 
-/* ==================================
-   PAGINA DE ANALISIS 
-   ================================== */
-
 .analyze-page-container {
   max-width: 800px;
   margin: 40px auto;
@@ -699,10 +674,6 @@ body, html, #root {
   max-width: 500px;
   margin: 0 auto;
 }
-
-/* ==================================
-   UPLOAD SECTION (MODERNA) 
-   ================================== */
 
 .modern-upload-container {
   background: white;
@@ -810,7 +781,6 @@ body, html, #root {
 }
 
 .analyze-btn:disabled {
-  /* Only applied while real HTML blocking is needed during the loading */
   cursor: not-allowed;
 }
 
@@ -833,10 +803,6 @@ body, html, #root {
   color: #9ca3af;
   margin-top: 12px;
 }
-
-/* ==================================
-   TRAITOR LIST (MODERNA)
-   ================================== */
 
 @keyframes slideInUp {
   0% {
@@ -890,8 +856,6 @@ body, html, #root {
   align-items: center;
   justify-content: space-between;
   transition: transform 0.2s, box-shadow 0.2s;
-  
-  /* Animacion staggered */
   opacity: 0;
   animation: slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -932,10 +896,6 @@ body, html, #root {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border-color: #d1d5db;
 }
-
-/* ==================================
-   ANIMACIONES Y SPINNERS
-   ================================== */
 
 @keyframes spin {
   to { transform: rotate(360deg); }
@@ -1004,9 +964,6 @@ body, html, #root {
   animation: pulse-glow 2s infinite ease-in-out;
 }
 
-/* ==================================
-   ANIMACIONES GENERALES LANDING PAGE
-   ================================== */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
@@ -1040,16 +997,13 @@ body, html, #root {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==================================
-   ESTILOS LANDING PAGE MEJORADOS
-   ================================== */
 .hero-section {
-  min-height: auto; /* Dejar que el contenido defina su espacio real ahora que no es flex 1 */
+  min-height: auto;
   margin: 0 auto;
 }
 
 .hero-title {
-  font-size: clamp(2rem, 4vw, 3.2rem); /* Ligeramente más pequeño */
+  font-size: clamp(2rem, 4vw, 3.2rem);
   line-height: 1.15;
 }
 
@@ -1063,7 +1017,7 @@ body, html, #root {
 }
 
 .hero-btn {
-  padding: 12px 24px; /* Botones más contenidos */
+  padding: 12px 24px;
   font-size: 1rem;
   border-radius: 30px;
   text-align: center;
@@ -1073,7 +1027,6 @@ body, html, #root {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Animaciones Stagger (Aparición en cascada) */
 .fade-in-up {
   opacity: 0;
   animation: fadeInUpCard 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -1084,13 +1037,11 @@ body, html, #root {
 .stagger-3 { animation-delay: 0.3s; }
 .stagger-4 { animation-delay: 0.4s; }
 
-/* Sin stagger, pero animado */
 .fade-in-scroll {
   opacity: 0;
   animation: fadeInUpCard 1s forwards cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
 }
 
-/* Sección Promo */
 .promo-section {
   text-align: center;
   max-width: 850px;
@@ -1111,12 +1062,11 @@ body, html, #root {
   line-height: 1.7;
 }
 
-/* Sección Cómo Funciona */
 .how-it-works-section {
   max-width: 1200px;
   margin: 0 auto 100px;
   padding: 0 5%;
-  scroll-margin-top: 100px; /* Evita que el scroll baje demasiado */
+  scroll-margin-top: 100px;
 }
 
 .how-it-works-content {
@@ -1124,7 +1074,7 @@ body, html, #root {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  flex-wrap: wrap; /* Esencial para que no se rompa el layout */
+  flex-wrap: wrap;
 }
 
 .how-it-works-text {
@@ -1178,7 +1128,7 @@ body, html, #root {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, #f09433, #bc1888); /* Instagram colors! */
+  background: linear-gradient(to bottom, #f09433, #bc1888);
   transform-origin: top;
   animation: progressFill 10s linear forwards;
 }
@@ -1256,17 +1206,16 @@ body, html, #root {
   position: relative;
   z-index: 1;
   max-width: 125%;
-  width: 125%; /* Imagen más grande y libre */
+  width: 125%;
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-left: -10%;
-  mix-blend-mode: multiply; /* Esto elimina el "recuadro blanco" asumiendo fondo claro */
+  mix-blend-mode: multiply;
 }
 
 .demonstration-graphic:hover {
   transform: scale(1.02);
 }
 
-/* Features Options */
 .features-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1321,7 +1270,6 @@ body, html, #root {
   animation: bouncePulse 1s ease-out infinite;
 }
 
-/* Footer y Modal Legales */
 .app-footer {
   background: white;
   border-top: 1px solid #f3f4f6;
@@ -1462,9 +1410,6 @@ body, html, #root {
   color: #111827;
 }
 
-/* ==================================
-   MEDIA QUERIES - RESPONSIVIDAD
-   ================================== */
 @media (max-width: 900px) {
   .hero-section {
     flex-direction: column;

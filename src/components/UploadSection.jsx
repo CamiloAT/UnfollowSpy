@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { TutorialModal } from './TutorialModal';
 
 const InstagramGradient = () => (
-// ...existing code...
   <svg width="0" height="0" style={{ position: 'absolute' }}>
     <defs>
       <linearGradient id="ig-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -53,12 +52,10 @@ export const UploadSection = ({ followers, following, error, handleFileUpload, c
 
   const handleClick = (ref) => {
     ref.current.click();
-    // Limpiamos los errores reactivos locales al hacer click para intentar subir
     setLocalErrors(false);
   };
 
   const onAnalyzeClick = () => {
-    // Verificar si hay errores (archivos faltantes o errores residuales fuertes)
     if (followers.length === 0 || following.length === 0 || error) {
       setLocalErrors(true);
       return; 
@@ -72,7 +69,6 @@ export const UploadSection = ({ followers, following, error, handleFileUpload, c
     }, 1500);
   };
 
-  // Determinar qué mensaje mostrar arriba del error:
   let hintMessage = "Debes subir ambos archivos correctos para comenzar el análisis.";
   if (localErrors) {
       if (followers.length === 0 && following.length === 0) hintMessage = "Por favor sube ambos archivos antes de continuar.";
@@ -85,7 +81,6 @@ export const UploadSection = ({ followers, following, error, handleFileUpload, c
     <div className="modern-upload-container">
       <InstagramGradient />
       <div className="upload-cards">
-        {/* Followers Card */}
         <div className={`upload-card ${followers.length > 0 ? 'success' : ''} ${localErrors && followers.length === 0 ? 'error-state' : ''}`} onClick={() => handleClick(followersInputRef)}>
           <div className="upload-icon">
             {followers.length > 0 ? <CheckCircleIcon /> : (localErrors && followers.length === 0) ? <ErrorIcon/> : <FolderIcon />}
@@ -105,7 +100,6 @@ export const UploadSection = ({ followers, following, error, handleFileUpload, c
           />
         </div>
 
-        {/* Following Card */}
         <div className={`upload-card ${following.length > 0 ? 'success' : ''} ${localErrors && following.length === 0 ? 'error-state' : ''}`} onClick={() => handleClick(followingInputRef)}>
           <div className="upload-icon">
             {following.length > 0 ? <CheckCircleIcon /> : (localErrors && following.length === 0) ? <ErrorIcon/> : <FolderIcon />}
