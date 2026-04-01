@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useInstagramData } from '../hooks/useInstagramData';
 import { UploadSection } from './UploadSection';
 import { UserList } from './UserList';
+import { Footer } from './Footer';
 
 const SearchIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 26 26" fill="none" stroke="url(#ig-gradient-title)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '6px', marginTop: '-6px' }}>
@@ -107,7 +108,7 @@ export const AnalyzePage = () => {
           users={traitors} 
           title="Resultados del Análisis" 
           emptyMessage="¡Felicidades! Todos los que sigues te siguen de vuelta."
-          statusMessage="No te sigue de vuelta"
+          statusMessage=" No te sigue de vuelta"
           searchEmptyMessage="No hay ningún traidor que coincida con tu búsqueda."
         />
       )}
@@ -117,7 +118,7 @@ export const AnalyzePage = () => {
           users={followers} 
           title="Cuentas que te siguen"
           emptyMessage="Aún no tienes seguidores registrados."
-          statusMessage="Te sigue"
+          statusMessage=" Te sigue"
           searchEmptyMessage="No hay ningún seguidor que coincida con tu búsqueda."
         />
       )}
@@ -127,7 +128,7 @@ export const AnalyzePage = () => {
           users={following} 
           title="Cuentas que sigues"
           emptyMessage="No sigues a ninguna cuenta todavía."
-          statusMessage="Le sigues"
+          statusMessage=" Le sigues"
           searchEmptyMessage="No hay ninguna cuenta seguida que coincida con tu búsqueda."
         />
       )}
