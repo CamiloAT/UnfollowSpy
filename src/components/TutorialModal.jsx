@@ -194,9 +194,11 @@ export const TutorialModal = ({ onClose }) => {
             </button>
           </div>
 
-          <button className="tutorial-skip" onClick={onClose}>
-            Ya los tengo... Saltar Tutorial
-          </button>
+          {currentStep === 0 && (
+            <button className="tutorial-skip" onClick={onClose}>
+              Ya los tengo... Saltar Tutorial
+            </button>
+          )}
         </div>
       </div>
     </div>

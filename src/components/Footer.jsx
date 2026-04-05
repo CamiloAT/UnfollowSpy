@@ -51,7 +51,7 @@ export const Footer = () => {
           <div className="footer-links">
             <a href="#privacidad" onClick={(e) => { e.preventDefault(); setModalType('privacy'); }}>Privacidad</a>
             <a href="#terminos" onClick={(e) => { e.preventDefault(); setModalType('terms'); }}>Términos</a>
-            <a href="https://github.com/CamiloAT/UnfollowSpy" target="_blank" rel="noreferrer">Código Fuente</a>
+            <a href="https://github.com/CamiloAT/unfollow-spy" target="_blank" rel="noreferrer">Código Fuente</a>
           </div>
         </div>
         <div className="footer-bottom">
